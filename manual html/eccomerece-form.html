@@ -1,11 +1,589 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timeless Watches – Elegant Luxury Watch</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a2340;
+    --navy-dark: #111827;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #faf8f4;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --border: #e5e1d8;
+    --white: #ffffff;
+    --red: #c0392b;
+  }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--navy);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    gap: 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-brand {
+    font-family: 'Jost', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--white);
+    white-space: nowrap;
+  }
+
+  .nav-search {
+    flex: 1;
+    max-width: 380px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 4px;
+    padding: 7px 14px;
+    color: white;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.875rem;
+    outline: none;
+    transition: background 0.2s;
+  }
+  .nav-search::placeholder { color: rgba(255,255,255,0.45); }
+  .nav-search:focus { background: rgba(255,255,255,0.15); }
+
+  .nav-links {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-links a:hover { color: white; background: rgba(255,255,255,0.08); }
+
+  .nav-icon {
+    color: rgba(255,255,255,0.8);
+    font-size: 1.1rem;
+    padding: 8px;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .nav-icon:hover { color: white; }
+
+  /* BREADCRUMB */
+  .breadcrumb {
+    padding: 14px 3rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    background: white;
+  }
+  .breadcrumb a { color: var(--muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--navy); }
+  .breadcrumb span { margin: 0 6px; }
+
+  /* MAIN PRODUCT LAYOUT */
+  .product-container {
+    max-width: 1100px;
+    margin: 2.5rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  /* LEFT: GALLERY */
+  .gallery-main {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .gallery-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .gallery-main-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #f0ece0, #e8e0cc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+  }
+
+  .badge-sale {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--red);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 3px;
+  }
+
+  .thumbnails {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .thumb {
+    width: 70px;
+    height: 70px;
+    border-radius: 6px;
+    border: 2px solid var(--border);
+    overflow: hidden;
+    cursor: pointer;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: border-color 0.2s;
+    flex-shrink: 0;
+  }
+  .thumb:hover { border-color: var(--navy); }
+  .thumb.active { border-color: var(--navy); }
+
+  /* RIGHT: PRODUCT INFO */
+  .product-info {
+    padding-top: 0.5rem;
+  }
+
+  .brand-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .product-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--navy-dark);
+    margin-bottom: 1.25rem;
+  }
+
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 1.25rem;
+  }
+
+  .price-current {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--navy-dark);
+  }
+
+  .price-original {
+    font-size: 1.1rem;
+    color: var(--muted);
+    text-decoration: line-through;
+  }
+
+  .price-off {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--red);
+    background: #fef2f1;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+
+  .product-desc {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    color: #4b5563;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1.25rem;
+  }
+
+  .rating-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+
+  .stars { display: flex; gap: 2px; }
+
+  .star {
+    font-size: 1rem;
+    color: #f59e0b;
+  }
+
+  .rating-text {
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  /* QUANTITY */
+  .qty-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .qty-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 1.5rem;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    width: fit-content;
+    overflow: hidden;
+  }
+
+  .qty-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: var(--navy);
+    transition: background 0.15s;
+    font-weight: 500;
+  }
+  .qty-btn:hover { background: var(--cream); }
+
+  .qty-display {
+    width: 48px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    border-left: 1px solid var(--border);
+    border-right: 1px solid var(--border);
+    line-height: 40px;
+    color: var(--navy-dark);
+  }
+
+  /* BUTTONS */
+  .btn-cart {
+    width: 100%;
+    padding: 15px 24px;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-bottom: 12px;
+  }
+  .btn-cart:hover { background: #111d35; transform: translateY(-1px); }
+  .btn-cart:active { transform: translateY(0); }
+
+  .btn-wishlist {
+    width: 100%;
+    padding: 13px 24px;
+    background: transparent;
+    color: var(--navy);
+    border: 1.5px solid var(--navy);
+    border-radius: 6px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 1.5rem;
+  }
+  .btn-wishlist:hover { background: var(--navy); color: white; }
+
+  /* NEWSLETTER OFFER */
+  .offer-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .offer-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--navy-dark);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .offer-title::before {
+    content: '';
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .offer-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .btn-signup {
+    padding: 10px 22px;
+    background: var(--navy);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-signup:hover { background: #111d35; }
+
+  /* FEATURES STRIP */
+  .features-strip {
+    max-width: 1100px;
+    margin: 0 auto 2.5rem;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .feature-item {
+    background: white;
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .feature-icon {
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .feature-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--navy-dark);
+    line-height: 1.3;
+  }
+
+  .feature-sub {
+    font-size: 0.75rem;
+    color: var(--muted);
+    line-height: 1.4;
+    margin-top: 2px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .product-container { grid-template-columns: 1fr; gap: 2rem; padding: 0 1rem; }
+    .product-title { font-size: 1.8rem; }
+    nav { padding: 0 1rem; gap: 1rem; }
+    .nav-search { max-width: 200px; }
+    .features-strip { grid-template-columns: repeat(2, 1fr); margin: 0 1rem 2rem; }
+    .breadcrumb { padding: 12px 1rem; }
+  }
+</style>
 </head>
 <body>
-    
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-brand">Timeless Watches</div>
+  <input class="nav-search" type="text" placeholder="Search...">
+  <div class="nav-links">
+    <span class="nav-icon">&#9679;</span>
+    <a href="#">Shop</a>
+    <a href="#">New Arrivals</a>
+    <a href="#">Brands</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="#">Home</a><span>›</span>
+  <a href="#">Shop</a><span>›</span>
+  <a href="#">Luxury Watches</a><span>›</span>
+  Elegant Luxury Watch
+</div>
+
+<!-- PRODUCT -->
+<div class="product-container">
+
+  <!-- LEFT: Gallery -->
+  <div>
+    <div class="gallery-main">
+      <div class="gallery-main-placeholder">⌚</div>
+      <div class="badge-sale">38% Off</div>
+    </div>
+    <div class="thumbnails">
+      <div class="thumb active">⌚</div>
+      <div class="thumb">🕐</div>
+      <div class="thumb">🔲</div>
+      <div class="thumb">⬛</div>
+      <div class="thumb">🔳</div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Info -->
+  <div class="product-info">
+    <div class="brand-tag">Prestige Time Co.</div>
+    <h1 class="product-title">Elegant Luxury Watch</h1>
+
+    <div class="price-row">
+      <span class="price-current">$499.99</span>
+      <span class="price-original">$799.99</span>
+      <span class="price-off">38% OFF</span>
+    </div>
+
+    <p class="product-desc">
+      This luxurious timepiece combines elegance with precision craftsmanship. Perfect for formal occasions or everyday wear, it features premium materials and impeccable design. Rose gold accents complement the rich black rubber strap for a refined yet contemporary aesthetic.
+    </p>
+
+    <div class="rating-row">
+      <div class="stars">
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star">★</span>
+        <span class="star" style="color:#d1d5db;">★</span>
+      </div>
+      <span class="rating-text">Rated 4.8/5 (256 reviews)</span>
+    </div>
+
+    <div class="qty-label">Quantity</div>
+    <div class="qty-row">
+      <button class="qty-btn" onclick="changeQty(-1)">−</button>
+      <div class="qty-display" id="qty">1</div>
+      <button class="qty-btn" onclick="changeQty(1)">+</button>
+    </div>
+
+    <button class="btn-cart">Add to Bag</button>
+    <button class="btn-wishlist">♡ &nbsp;Save to Wishlist</button>
+
+    <div class="offer-box">
+      <div class="offer-title">Limited-Time Offer!</div>
+      <p class="offer-desc">Get an additional 10% off your first purchase when you sign up for our newsletter.</p>
+      <button class="btn-signup">Sign Up Now</button>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES STRIP -->
+<div class="features-strip">
+  <div class="feature-item">
+    <div class="feature-icon">🚚</div>
+    <div>
+      <div class="feature-title">Free Shipping</div>
+      <div class="feature-sub">On all orders over $150</div>
+    </div>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">↩</div>
+    <div>
+      <div class="feature-title">30-Day Returns</div>
+      <div class="feature-sub">Hassle-free returns</div>
+    </div>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">🔒</div>
+    <div>
+      <div class="feature-title">Secure Checkout</div>
+      <div class="feature-sub">SSL encrypted payment</div>
+    </div>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">🛡</div>
+    <div>
+      <div class="feature-title">2-Year Warranty</div>
+      <div class="feature-sub">Full manufacturer coverage</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let qty = 1;
+  function changeQty(delta) {
+    qty = Math.max(1, qty + delta);
+    document.getElementById('qty').textContent = qty;
+  }
+
+  document.querySelectorAll('.thumb').forEach((t, i) => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.thumb').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+    });
+  });
+</script>
 </body>
 </html>
