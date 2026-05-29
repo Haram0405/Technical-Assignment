@@ -1,51 +1,127 @@
-# Timeless Watches — Product Page
+# AI Prompts Repository
 
-A single-file e-commerce product page built with HTML, CSS, and vanilla JS.
-
----
-
-## Prompts Used
-
-**Prompt 1:**
-> "Create same design and structure of this ecommerce website page"
-> *(accompanied by a screenshot of the original design)*
-
-**Prompt 2:**
-> "Add a README.md explaining: what prompts you used, how AI helped, what you changed."
+This repository contains 5 AI prompts created using the **What / How / Why** framework.
+The purpose of this project is to practice writing effective AI prompts with clear instructions and proper context.
 
 ---
 
-## How AI Helped
+# Prompts Used
 
-- **Interpreted the screenshot** — extracted layout structure, color palette, typography hierarchy, spacing, and component breakdown directly from the image without needing a written spec.
-- **Wrote all the code** — full HTML, CSS, and JavaScript in one pass: sticky navbar, two-column product grid, thumbnail gallery, quantity selector, price block, rating row, CTA buttons, newsletter offer box, and features strip.
-- **Made design decisions** — chose `Cormorant Garamond` for the product title (a refined serif that suits luxury goods) and `Jost` for UI text, rather than defaulting to generic system fonts.
-- **Added interactivity** — the quantity +/− buttons and thumbnail active-state switching were written and wired up automatically.
-- **Structured for portability** — everything lives in a single `.html` file with no external dependencies beyond Google Fonts, so it works by just opening the file.
+## Prompt 01 – Ecommerce Dashboard Design
 
----
+Created a prompt for designing a dark-themed ecommerce dashboard with a modern and user-friendly interface.
 
-## What Was Changed or Added vs. the Original Screenshot
+### Focus:
 
-| Area | Original | This Version |
-|---|---|---|
-| Watch image | Real product photo | Emoji placeholder (swap in your own `<img>`) |
-| Thumbnails | Actual photos | Emoji placeholders |
-| Wishlist button | Not present | Added below "Add to Bag" |
-| Breadcrumb | Not visible | Added below navbar |
-| Features strip | Not visible | Added (Shipping · Returns · Security · Warranty) |
-| Typography | Generic sans-serif | Cormorant Garamond (titles) + Jost (UI) |
-| Hover states | Unknown | Smooth transitions on all interactive elements |
-| Responsive layout | Unknown | Collapses to single column on mobile |
+* Dark aesthetic UI
+* Clean visuals
+* User-friendly experience
 
 ---
 
-## How to Customise
+## Prompt 02 – AI Tools Presentation
 
-1. **Add your watch image** — replace the `<div class="gallery-main-placeholder">` with:
-   ```html
-   <img src="your-watch.jpg" alt="Elegant Luxury Watch">
-   ```
-2. **Update thumbnail images** — replace each `.thumb` div's emoji content with `<img>` tags.
-3. **Change copy/pricing** — edit the product title, description, and price values directly in the HTML.
-4. **Adjust colors** — all brand colors are CSS variables at the top of the `<style>` block (`--navy`, `--gold`, `--cream`, etc.).
+Created a presentation content prompt about AI tools.
+
+### Focus:
+
+* Simple wording
+* Clear headings
+* Presentation-friendly points
+
+---
+
+## Prompt 03 – Coding Tricks & Tips
+
+Created a prompt for generating coding tricks and tips related to:
+
+* HTML
+* CSS
+* JavaScript
+* React.js
+
+### Focus:
+
+* Concise explanations
+* Proper examples
+* Learning-focused content
+
+---
+
+## Prompt 04 – Hair Salon Business Card
+
+Created a design prompt for a premium salon business card.
+
+### Focus:
+
+* Calm color palette
+* Premium appearance
+* Unique layout
+* Light green/light beige theme
+
+---
+
+## Prompt 05 – React Project Ideas
+
+Created a prompt for beginner-friendly React project ideas.
+
+### Focus:
+
+* Practice projects
+* Portfolio improvement
+* LinkedIn-ready ideas
+
+---
+
+# How AI Helped
+
+AI helped in multiple ways during this project:
+
+* Generated structured prompts using the What / How / Why framework.
+* Improved wording and readability.
+* Suggested professional formatting for README.md.
+* Helped organize ideas clearly and professionally.
+* Provided examples and better prompt structures.
+
+AI also helped save time by generating clean and understandable content quickly.
+
+---
+
+# What I Changed
+
+After generating the prompts with AI assistance, I made several improvements manually:
+
+* Simplified difficult wording.
+* Adjusted prompts according to my own learning goals.
+* Added more clear instructions in the HOW sections.
+* Improved formatting and headings for better readability.
+* Customized prompts according to frontend development and design interests.
+
+---
+
+# Technologies Used
+
+* GitHub
+* Markdown (`README.md`)
+* AI Prompt Engineering
+
+---
+
+# Learning Outcome
+
+Through this project, I learned:
+
+* How to write better AI prompts
+* Importance of clear instructions
+* How context improves AI-generated responses
+* Basic GitHub repository management
+* Markdown formatting for documentation
+
+---
+
+# Conclusion
+
+This project helped improve my understanding of prompt engineering and GitHub documentation.
+Using the What / How / Why framework made the prompts more detailed, clear, and effective.
+
+---
