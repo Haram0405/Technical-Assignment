@@ -1,4 +1,4 @@
-# Manual HTML Projects
+# Manual HTML Project
 
 This repository contains two HTML projects created manually without copying AI-generated code.
 The purpose of this task was to practice writing HTML structure by hand and improve understanding of basic web development concepts.
